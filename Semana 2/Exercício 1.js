@@ -24,27 +24,26 @@ var meses = [
     'jan', 'mar', 'mar', 'abr', 'jun', 'jul', 'set', 'out', 'dez',
 ];
 var alunos = [
+    { nome: 'Luciana', nota: 6.5, bolsista: false },
     { nome: 'João', nota: 7.3, bolsista: false },
     { nome: 'Maria', nota: 9.2, bolsista: true },
     { nome: 'Pedro', nota: 9.8, bolsista: false },
-    { nome: 'Ana', nota: 8.7, bolsista: true }
+    { nome: 'Ana', nota: 8.7, bolsista: true },
+    { nome: 'Lucas', nota: 6.5, bolsista: false },
+    { nome: 'Alguem', nota: 7.3, bolsista: true },
 ];
-function pick(alunos, nomes) {
-    var temp = {};
+function pick(alunos, atributos) {
     var requisicao = [];
     alunos.forEach(function (aluno) {
-        nomes.forEach(function (nome) {
-            if (aluno.nome === nome) {
-                temp = { nome: aluno.nome, nota: aluno.nota };
-                requisicao.push(temp);
-            }
+        var temp = {};
+        atributos.map(function (atributo) {
+            temp[atributo] = aluno[atributo];
         });
+        requisicao.push(temp);
     });
     return requisicao;
 }
-console.log(pick(alunos, ['João', 'Maria', 'Pedro']));
-console.log(pick(alunos, ['João', 'Maria']));
-//pick(alunos, ['nome', 'nota']);
+console.log(pick(alunos, ['nome', 'nota']));
 // resultado esperado:
 // [
 //   { nome: 'João', nota: 7.3 },
@@ -59,9 +58,21 @@ console.log(pick(alunos, ['João', 'Maria']));
 //   return null;
 // };
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//4. ainda com o mesmo exemplo dos alunos, implementar agora um método chamado `orderBy`. Esse método deverá receber um parâmetro do tipo array de objetos, e outro parâmetro, um array de strings. O método deverá retornar um novo array, com os objetos ordenados de acordo com o critério do array de strings. Importante: O array original deve ser mantido intacto. Abaixo, segue um exemplo do funcionamento esperado:
+//4. ainda com o mesmo exemplo dos alunos, implementar agora um método chamado `orderBy`.
+//Esse método deverá receber um parâmetro do tipo array de objetos, e outro parâmetro, um array de strings. O método deverá retornar um novo array,
+//com os objetos ordenados de acordo com o critério do array de strings. Importante: O array original deve ser mantido intacto. Abaixo, segue um exemplo do funcionamento esperado:
 //const alunos = [/* mesmo objeto de alunos do exercício anteior */];
-//orderBy(alunos, ['nota', 'nome']);
+function orderBy(alunos, atributos) {
+    var temp = alunos.slice(0);
+    atributos.reverse().forEach(function (atributo) {
+        temp.sort(function (a, b) {
+            return typeof a[atributo] === "string" ? a[atributo].localeCompare(b[atributo]) : a[atributo] - b[atributo];
+        });
+    });
+    return temp;
+}
+console.log(orderBy(alunos, ['nota', 'nome']));
+console.log(alunos);
 // resultado esperado:
 // [
 //   { nome: 'João', nota: 7.3 },
@@ -80,9 +91,11 @@ console.log(pick(alunos, ['João', 'Maria']));
 function fila() {
     var fila = [];
     var adicionar = function (elemento) {
+        fila.push(elemento);
         // aqui, você deve utilizar o método correto para adicionar um novo elemento à variável de fila.
     };
     var remover = function () {
+        return fila.shift();
         // aqui, você deve utilizar o método correto para remover um novo elemento à variável de fila.
     };
     return { adicionar: adicionar, remover: remover };
@@ -90,9 +103,11 @@ function fila() {
 function pilha() {
     var pilha = [];
     var adicionar = function (elemento) {
+        pilha.push(elemento);
         // aqui, você deve utilizar o método correto para adicionar um novo elemento à variável de pilha.
     };
     var remover = function () {
+        return pilha.pop();
         // aqui, você deve utilizar o método correto para remover um novo elemento à variável de pilha.
     };
     return { adicionar: adicionar, remover: remover };
@@ -120,3 +135,4 @@ var usuarios = [
 ];
 var usuariosAtivos = []; // ???
 var usuariosInativos = []; // ???
+usuarios.map(function (usuario) { return usuario.ativo ? usuariosAtivos.push(usuario) : usuariosInativos.push(usuario); });
