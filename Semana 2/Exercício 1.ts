@@ -19,7 +19,8 @@ const fazUmBigMac = (ingrediente:string[]):string=>{
     let bigMac = ingrediente.reduce((bigMac,valorAtual)=>bigMac+", "+valorAtual)
     return bigMac
 }
-console.log(fazUmBigMac(ingredientes));
+
+console.log(`Solução exercício 1:\n${fazUmBigMac(ingredientes)}`);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //2. A lista de meses abaixo está incompleta (e incorreta!). Utilize os métodos do array para adicionar os meses faltantes.
@@ -28,6 +29,13 @@ console.log(fazUmBigMac(ingredientes));
 const meses = [
   'jan', 'mar', 'mar', 'abr', 'jun', 'jul', 'set', 'out', 'dez',
 ];
+
+meses.splice(1,1,'fev')
+meses.splice(4,0,'mai')
+meses.splice(7,0,'ago')
+meses.splice(10,0,'nov')
+
+console.log(`Solução exercício 2:\n${meses}`)
 
 // como adicionar os meses de "fev", "mai", "ago", "nov" nas posições corretas?
 
@@ -60,8 +68,10 @@ function pick(alunos:registro[],atributos:string[]){
     return requisicao
 }
 
-console.log(pick(alunos, ['nome', 'nota']));
-
+console.log('Solução exerício 3:\n')
+console.log(pick(alunos, ['nome', 'nota']))
+console.log('Array original')
+console.log(alunos)
 // resultado esperado:
 // [
 //   { nome: 'João', nota: 7.3 },
@@ -95,7 +105,9 @@ function orderBy(alunos:registro[], atributos:string[]){
   return temp
 }
 
+console.log(`Solução exerício 4:\n`)
 console.log(orderBy(alunos,['nota','nome']))
+console.log('Array original')
 console.log(alunos)
 
 // resultado esperado:
@@ -153,7 +165,7 @@ const fila1 = fila();
 fila1.adicionar(1);
 fila1.adicionar(2);
 fila1.adicionar(3);
-
+console.log('Solução exerício 5:\n')
 console.log('valor esperado: 1; valor recebido: ', fila1.remover());
 console.log('valor esperado: 2; valor recebido: ', fila1.remover());
 console.log('valor esperado: 3; valor recebido: ', fila1.remover());
@@ -181,3 +193,5 @@ const usuariosAtivos = [] // ???
 const usuariosInativos = [] // ???
 
 usuarios.map(usuario=> usuario.ativo ? usuariosAtivos.push(usuario) : usuariosInativos.push(usuario))
+console.log(usuariosAtivos)
+console.log(usuariosInativos)
