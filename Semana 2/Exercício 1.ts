@@ -104,7 +104,6 @@ const orderBy = <T extends Record<string, any >>(record: T[],...args: (keyof T)[
   return temp
 }
 
-console.log(pick(alunos,'nome','nota'))
 console.log('Solução exerício 4:\n')
 console.log(orderBy(alunos, "nota",'nome'))
 
