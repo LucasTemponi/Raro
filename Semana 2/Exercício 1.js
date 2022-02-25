@@ -1,9 +1,15 @@
 /*Exercícios de manipulação de arrays em javascript
-
 O propósito dos exercícios abaixo é que você pratique os conhecimentos adquiridos na aula sobre os métodos de manipulação de arrays. Pede-se que você faça ao máximo o uso dos métodos do protótipo do array, ou seja, **não vale utilizar os iteradores `for`, `while` e `do`**.
-
-
 1. Abaixo você tem a lista de todos os ingredientes necessários para fazer um Hambúrguer. Utilizando o reduce, como você pode fazer para unir todos os itens do array em uma única string?*/
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var ingredientes = [
     '2 hambúrgueres',
     'alface',
@@ -37,19 +43,23 @@ var alunos = [
     { nome: 'Lucas', nota: 6.5, bolsista: false },
     { nome: 'Alguem', nota: 7.3, bolsista: true },
 ];
-function pick(alunos, atributos) {
+var pick = function (record) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
     var requisicao = [];
-    alunos.forEach(function (aluno) {
+    record.forEach(function (aluno) {
         var temp = {};
-        atributos.map(function (atributo) {
+        args.map(function (atributo) {
             temp[atributo] = aluno[atributo];
         });
         requisicao.push(temp);
     });
     return requisicao;
-}
+};
 console.log('Solução exerício 3:\n');
-console.log(pick(alunos, ['nome', 'nota']));
+console.log(pick(alunos, 'nome', 'nota'));
 console.log('Array original');
 console.log(alunos);
 // resultado esperado:
@@ -70,19 +80,36 @@ console.log(alunos);
 //Esse método deverá receber um parâmetro do tipo array de objetos, e outro parâmetro, um array de strings. O método deverá retornar um novo array,
 //com os objetos ordenados de acordo com o critério do array de strings. Importante: O array original deve ser mantido intacto. Abaixo, segue um exemplo do funcionamento esperado:
 //const alunos = [/* mesmo objeto de alunos do exercício anteior */];
-function orderBy(alunos, atributos) {
-    var temp = alunos.slice(0);
-    atributos.reverse().forEach(function (atributo) {
+var orderBy = function (record) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    var i = alunos.slice(0);
+    var temp = pick.apply(void 0, __spreadArray([i], args, false));
+    args.reverse().forEach(function (atributo) {
         temp.sort(function (a, b) {
             return typeof a[atributo] === "string" ? a[atributo].localeCompare(b[atributo]) : a[atributo] - b[atributo];
         });
     });
     return temp;
-}
-console.log("Solu\u00E7\u00E3o exer\u00EDcio 4:\n");
-console.log(orderBy(alunos, ['nota', 'nome']));
-console.log('Array original');
-console.log(alunos);
+};
+console.log(pick(alunos, 'nome', 'nota'));
+console.log('Solução exerício 4:\n');
+console.log(orderBy(alunos, "nota", 'nome'));
+// function orderBy(alunos:registro[], atributos:string[]){
+//   let temp = alunos.slice(0)
+//   temp = pick(temp,atributos)
+//   atributos.reverse().forEach((atributo)=>{
+//       temp.sort((a,b)=>
+//       typeof a[atributo]==="string" ? a[atributo].localeCompare(b[atributo]):a[atributo] - b[atributo])
+//   })
+//   return temp
+// }
+// console.log(`Solução exerício 4:\n`)
+// console.log(orderBy(alunos,['nota','nome']))
+// console.log('Array original')
+// console.log(alunos)
 // resultado esperado:
 // [
 //   { nome: 'João', nota: 7.3 },

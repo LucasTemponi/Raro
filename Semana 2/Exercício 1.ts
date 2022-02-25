@@ -1,8 +1,5 @@
 /*Exercícios de manipulação de arrays em javascript
-
 O propósito dos exercícios abaixo é que você pratique os conhecimentos adquiridos na aula sobre os métodos de manipulação de arrays. Pede-se que você faça ao máximo o uso dos métodos do protótipo do array, ou seja, **não vale utilizar os iteradores `for`, `while` e `do`**.
-
-
 1. Abaixo você tem a lista de todos os ingredientes necessários para fazer um Hambúrguer. Utilizando o reduce, como você pode fazer para unir todos os itens do array em uma única string?*/
 
 const ingredientes = [
@@ -55,13 +52,14 @@ const alunos = [
     { nome:'Alguem', nota:7.3, bolsista:true},
 ];
 
-function pick(alunos:registro[],atributos:string[]){
-    let requisicao = []
+const pick = <T extends Record<string, unknown>>(record: T[],... args: (keyof T)[]): Record<string, unknown>[] => {
     
-    alunos.forEach(aluno=>{
-        let temp = {}
-        atributos.map(atributo=>{
-            temp[atributo]=aluno[atributo]             
+    let requisicao = [] as T[]
+   
+    record.forEach(aluno=>{
+        let temp = {} as T
+        args.map(atributo=>{
+            temp[atributo] = aluno[atributo];             
             })
            requisicao.push(temp)
         })
@@ -69,7 +67,7 @@ function pick(alunos:registro[],atributos:string[]){
 }
 
 console.log('Solução exerício 3:\n')
-console.log(pick(alunos, ['nome', 'nota']))
+console.log(pick(alunos, 'nome', 'nota'))
 console.log('Array original')
 console.log(alunos)
 // resultado esperado:
@@ -96,19 +94,34 @@ console.log(alunos)
 
 //const alunos = [/* mesmo objeto de alunos do exercício anteior */];
 
-function orderBy(alunos:registro[], atributos:string[]){
-  let temp = alunos.slice(0)
-  atributos.reverse().forEach((atributo)=>{
-      temp.sort((a,b)=>
+const orderBy = <T extends Record<string, any >>(record: T[],...args: (keyof T)[]): Record<string, unknown>[] => {
+  let i = alunos.slice(0) as unknown as T[]
+  let temp = pick(i,...args) as T[]
+  args.reverse().forEach((atributo)=>{
+     temp.sort((a,b)=>
       typeof a[atributo]==="string" ? a[atributo].localeCompare(b[atributo]):a[atributo] - b[atributo])
   })
   return temp
 }
 
-console.log(`Solução exerício 4:\n`)
-console.log(orderBy(alunos,['nota','nome']))
-console.log('Array original')
-console.log(alunos)
+console.log(pick(alunos,'nome','nota'))
+console.log('Solução exerício 4:\n')
+console.log(orderBy(alunos, "nota",'nome'))
+
+// function orderBy(alunos:registro[], atributos:string[]){
+//   let temp = alunos.slice(0)
+//   temp = pick(temp,atributos)
+//   atributos.reverse().forEach((atributo)=>{
+//       temp.sort((a,b)=>
+//       typeof a[atributo]==="string" ? a[atributo].localeCompare(b[atributo]):a[atributo] - b[atributo])
+//   })
+//   return temp
+// }
+
+// console.log(`Solução exerício 4:\n`)
+// console.log(orderBy(alunos,['nota','nome']))
+// console.log('Array original')
+// console.log(alunos)
 
 // resultado esperado:
 // [
