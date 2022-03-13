@@ -1,0 +1,26 @@
+header{
+    background-image: 
+    linear-gradient(
+        rgba(12,32 , 0, 0.9), 
+        rgba(0, 0, 0, 0.8)
+    ),
+    url("https://res.cloudinary.com/twenty20/private_images/t_watermark-criss-cross-10/v1536043191000/photosp/b27c433f-cb86-41c9-b6b1-09c8848d5b33/stock-photo-pattern-abstract-technology-futuristic-texture-background-digital-computer-data-b27c433f-cb86-41c9-b6b1-09c8848d5b33.jpg");
+    position: relative;    
+    color: white;
+}
+
+header h1{
+    margin-bottom: 2px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+header p{
+    margin: 1em;
+    font-weight: bold;
+}
+
+header .secao{ 
+    display:flex;
+    margin: 0 auto;
+}
