@@ -1,0 +1,71 @@
+*{ 
+    display:flex;   
+    flex-direction:column;
+    caret-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+}
+
+title{
+    display:none;
+}
+
+main{  
+    display:flex;  
+    margin: 3rem auto;
+}
+
+img{
+    transition: 0.3s;
+    max-width:10em;
+    padding: 0.2vw ;
+    border-radius: 50%
+}
+
+.icones{
+    border-radius: 0px;
+    width: 1.8rem;
+    margin: 1rem 0.8rem;
+}
+
+p{
+    margin: 1em 0;
+    width:auto;
+}
+
+dl {
+    display:block;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+dt{
+    float: left;
+    width: 20%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0.4em 0;
+  }
+dd{
+    float: right;
+    width: 80%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0.4em 0;
+    text-align: right;
+  }
+
+  li{
+      display: list-item;
+      margin:0.3em;
+  }
+
+  ul li::marker{
+      color: rgb(100,255,0)
+  }
+
+  ul{
+      margin:1em 0;
+  }
+

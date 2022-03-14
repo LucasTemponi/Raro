@@ -1,0 +1,139 @@
+.secao{   
+    margin: 0 0 3rem 0;  
+    width: min(1200px, 85vw);
+}
+
+.secao article{
+    margin: 0.5em 0;
+}
+
+#sobre article{
+    width: 50%;
+    padding: 1em;
+    margin:0.5em;
+}
+
+.titulo{
+    justify-content:center;
+    align-items: center; 
+    opacity: 2;
+    padding: 2rem;
+}
+
+.conteudo{    
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+#sobre{
+    flex-direction: row;
+    justify-content: center;
+}
+
+.formacao{
+    flex-direction: row;
+}
+
+#formacao > div{
+    flex-direction: row;
+}
+
+#formacao > * >article{
+    min-height: 12em;
+}
+
+#formacao > div:last-of-type{
+    margin: 0 0 2em 0;
+}
+
+.descricao{
+    padding:1em;
+    width:auto;
+}
+
+.descricao h4{
+    margin:0;
+    padding:0;
+    color:grey;
+}
+
+.meioMeio{
+    width: 50%;
+}
+
+div > article:nth-child(1){
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+div > article:nth-child(2){
+    margin: 0.5em 0 0.5em 0.5em;
+}
+
+.cabecalho {
+    width: min(11em,20vw);
+    min-width: 11em;
+    min-height: 100px;
+    background-color: #000050;
+    color: white;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+}
+
+#experiencias > * > .cabecalho{
+    min-width: 15em;
+}
+
+#experiencias > article{
+    min-height: 13em;
+}
+
+.cabecalho span{
+    color:rgb(100,255,0)
+}
+
+@media screen and (max-width:1100px){
+    #sobre{
+        flex-direction: column;
+        justify-content: center;
+    } 
+    #sobre article{
+        width: auto;
+        padding: 0.5em 1em 0.5em 1em ;
+        margin: 0 0.5em 0 0.5em;
+    }
+    div.cabecalho{
+        width: auto;
+        padding: 1em 0 1em 0;
+        min-height: auto;
+    }
+    article.formacao.conteudo.meioMeio{
+        flex-direction: column;
+        min-height: 15em;
+    }
+}
+
+@media screen and (max-width:900px){
+    .formacao{
+        flex-direction: column;
+    }
+    .cabecalho{
+        width: auto;
+        padding: 1em 0 1em 0;
+        min-height: auto;
+    }
+    .cabecalho h4{
+        margin: 0;
+    }
+    ul{
+        margin:0
+    }
+    .meioMeio{
+        width: auto;
+    }
+    section#formacao.secao>div{
+        flex-direction: column;
+    }
+}
