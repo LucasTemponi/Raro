@@ -3,7 +3,7 @@
     flex-direction:column;
     caret-color: transparent;
     font-family: 'Roboto', sans-serif;
-    margin:0;
+
 }
 
 title{
@@ -13,6 +13,26 @@ title{
 main{  
     display:flex;  
     margin: 3rem auto;
+}
+
+h1{
+    margin-bottom: 2px;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+h3{
+    font-weight: 600;
+}
+
+h4{
+    margin:0;
+    padding:0;
+    color:grey;
+}
+
+p{
+    margin: 1em;
 }
 
 img{
@@ -69,3 +89,12 @@ dd{
       margin:1em 0;
   }
 
+@media (prefers-color-scheme:dark){
+    body{
+        background-color:#212121;
+        color:white;
+    }
+    .conteudo{
+        background-color: #424242;
+    }
+}

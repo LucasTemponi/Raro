@@ -9,18 +9,14 @@ header{
     color: white;
 }
 
-header h1{
-    margin-bottom: 2px;
-    font-size: 2em;
-    font-weight: 800;
-}
-
-header p{
-    margin: 1em;
-    font-weight: bold;
-}
-
 header .secao{ 
     display:flex;
     margin: 0 auto;
+}
+
+.titulo{
+    justify-content:center;
+    align-items: center; 
+    opacity: 2;
+    padding: 2rem;
 }
