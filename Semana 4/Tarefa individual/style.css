@@ -1,0 +1,100 @@
+body{
+    background-color: #4d77ff;
+    min-height:100vh;
+
+}
+
+header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: min(900px, 85vw);
+    margin:3em auto;
+    background-color: #4d77ff;
+}
+
+main{
+    margin: 2em auto;
+    display:flex;
+    flex-direction: column;
+    background-color: #4d77ff;
+}
+
+.searchButton{
+    border-radius: 48px;
+    width: min(12em,20vw);
+    background-color: #f2fa5a;
+    color: rgb(118,118,118);
+    font-size: 1.2em;
+}
+
+.botaoAzul{
+    border-radius:8px;
+    background-color: #56E6EE;
+    color:#f2fa5a;
+    padding:0.5em;
+    margin: 0.2em;
+    border-color: #f2fa5a;
+    border-width: thin;
+}
+
+.foto{
+    width:4.5em;
+    height:4.5em;
+    border-radius: 50%;
+}
+
+.card{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin:12px auto;
+    padding:0.4em 0.8em;
+    width: min(56em, 85vw);
+    border-radius: 10px;
+
+    background-color: #56bbf1;    
+}
+
+#itensCard{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#textoCard{
+    margin:0 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+#botoes{
+    flex-direction: row;
+}
+
+.position{
+    margin:0;
+    color:#F4BBBB;
+    font-size:1.2em
+}
+
+.nome{
+    margin:0;
+    color: #f2fa5a;
+    font-size: 1.5em;
+}
+
+h1{
+    margin:0;
+    color: #f2fa5a;
+}
+
+.notificacao{
+    margin:0 auto;
+    color:#f2fa5a;
+    align-items: flex-start;
+    width: min(900px, 85vw);
+    font-weight: bold;
+}

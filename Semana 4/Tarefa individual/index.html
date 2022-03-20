@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div id="root"></div>
+        
+        <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    
+        <script type="text/babel">
+
+        const rootElement = document.getElementById('root')
+
+        const Header = ({children})=>(
+            <header>
+                <h1>{children}</h1>
+                <button class="searchButton">Search</button>
+            </header>
+        )
+
+        const Card = ({children,fotoURL,phone,email,name,position})=>(
+            <article class="card">
+                <div id='itensCard'>
+                    <img class="foto" src={fotoURL} alt={name}></img>
+                    <div id="textoCard">
+                        <span class="nome">{name}</span>
+                        <span class="position">{position}</span>
+                    </div>
+                </div>
+                <div id="botoes">
+                    <button class="botaoAzul">Call</button>
+                    <button class="botaoAzul">Send email</button>
+                </div>
+            </article>           
+        )
+
+        const Contatos = ({contacts})=>(
+            contacts.map(contato => {
+                return <Card name={contato.name} fotoURL={contato.fotoURL} phone={contato.phone} email={contato.email} position={contato.position}></Card>                                
+            })
+        )
+
+        const Notificacao = ({children})=>(
+            <span class="notificacao">We found {children} contacts</span>
+        )
+
+        const BotaoAzul=({children})=>(
+            <button class="botaoAzul">{children}</button>
+        )
+        
+        const todosContatos = [{name:"Tom James",position:"Programmer",fotoURL:"https://previews.123rf.com/images/julenochek/julenochek1502/julenochek150200499/36738234-sch%C3%B6ne-frau-trinken-kaffee-am-morgen-am-fenster-sitzen.jpg"},
+            {name:"Alessa Smith",position:"Manager",fotoURL:"https://i.pinimg.com/564x/38/1b/06/381b0623eda223138f89bf2c4b312076.jpg"},
+            {name:"Kate Minard",position:"Web Designer",fotoURL:"https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+            {name:"John Tudor",position:"Database Admin",fotoURL:"http://"}
+        ]
+
+        const element = (
+            <div>
+                <Header>CONTACTS</Header>
+                <main>
+                    <Contatos contacts={todosContatos}></Contatos> 
+                    <Notificacao>{todosContatos.length}</Notificacao>                   
+                </main>
+            </div>
+        )
+        ReactDOM.render(element, rootElement);
+    </script>
+</body>
+</html>
